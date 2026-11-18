@@ -1,4 +1,4 @@
-const CACHE='vista-v2-2-20261118a';
+const CACHE='vista-v2-3-20261118a';
 const CORE=['./','./index.html','./styles.css','./app.js','./pano-viewer.js','./manifest.webmanifest',
   './assets/icon-192.png','./assets/icon-512.png'];
 self.addEventListener('install',event=>{
