@@ -1,15 +1,19 @@
-const CACHE = 'ai-sicurezza-demo-v1.0.0';
-const FILES = [
-  './','./index.html','./styles.css','./app.js','./manifest.webmanifest',
-  './assets/office-panorama.svg','./assets/campus.webp','./assets/lab_demo.webp',
-  './assets/icon-192.png','./assets/icon-512.png'
-];
-self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(FILES)));self.skipWaiting();});
-self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()));});
-self.addEventListener('fetch',e=>{
-  if(e.request.method!=='GET'||new URL(e.request.url).origin!==self.location.origin)return;
-  e.respondWith(caches.match(e.request).then(cached=>cached||fetch(e.request).then(response=>{
-   if(response.ok){const copy=response.clone();caches.open(CACHE).then(cache=>cache.put(e.request,copy));}
-   return response;
-  }).catch(()=>caches.match('./index.html'))));
+const CACHE='vista-v2-1-20261118b';
+const CORE=['./','./index.html','./styles.css','./app.js','./manifest.webmanifest',
+  './assets/icon-192.png','./assets/icon-512.png'];
+self.addEventListener('install',event=>{
+ event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(CORE)));
+ self.skipWaiting();
+});
+self.addEventListener('activate',event=>{
+ event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key.startsWith('vista-')&&key!==CACHE).map(key=>caches.delete(key)))).then(()=>self.clients.claim()));
+});
+self.addEventListener('fetch',event=>{
+ if(event.request.method!=='GET'||new URL(event.request.url).origin!==self.location.origin)return;
+ event.respondWith(fetch(event.request).then(response=>{
+  if(response.ok&&new URL(event.request.url).pathname.match(/\.(?:js|css|png|webp|webmanifest|html)$/i)){
+   const copy=response.clone();caches.open(CACHE).then(cache=>cache.put(event.request,copy)).catch(()=>{});
+  }
+  return response;
+ }).catch(()=>caches.match(event.request).then(cached=>cached|| (event.request.mode==='navigate'?caches.match('./index.html'):Response.error()))));
 });
