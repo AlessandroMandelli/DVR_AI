@@ -134,40 +134,24 @@
 .projection-switch>button.is-active{background:#e4f2fe;border-color:#2684c5;color:#0b5b96}
 .projection-switch>button:focus-visible{outline:2px solid #0c74bd;outline-offset:2px}
 
-/* V.I.S.T.A. 2.5: navigazione sempre raggiungibile senza scorrimento. */
-.page-content{padding-bottom:104px}
+/* V.I.S.T.A. v2.7: azioni di navigazione nel flusso naturale della pagina. */
 .bottom-actions{
-  position:fixed;bottom:max(12px,env(safe-area-inset-bottom));left:50%;
-  transform:translateX(-50%);width:min(1396px,calc(100% - 42px));
-  z-index:28;display:flex;align-items:center;justify-content:space-between;
-  gap:12px;padding:11px 14px;border:1px solid #cbdde8;border-radius:15px;
-  background:rgba(248,251,253,.97);box-shadow:0 12px 38px rgba(10,43,70,.16);
-  backdrop-filter:blur(8px)
+  position:static;display:flex;justify-content:space-between;align-items:center;
+  gap:12px;width:100%;margin:0;padding:24px 0 0;
+  border:0;border-radius:0;background:transparent;box-shadow:none;
+  transform:none;backdrop-filter:none
 }
-/* I controlli manuali e quelli iniziali utilizzano lo stesso layout di validazione. */
+/* Schede di validazione uniformi, mantenute dalla v2.5. */
 .review-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:13px;row-gap:12px}
 .review-fields label{min-width:0}
 .review-fields textarea{min-height:64px}
 .review-fields input,.review-fields select{min-height:40px}
-@media(max-width:820px){
- .review-fields{grid-template-columns:1fr}
- .bottom-actions{width:calc(100% - 22px);bottom:max(8px,env(safe-area-inset-bottom))}
-}
+@media(max-width:820px){.review-fields{grid-template-columns:1fr}}
 @media(max-width:620px){
- .page-content{padding-bottom:92px}
- .bottom-actions{padding:8px;gap:8px}
- .bottom-actions .button{min-height:44px;padding:9px 10px;white-space:normal}
- .bottom-actions .back-bottom{min-width:102px}
- .bottom-actions .button.primary{min-width:0}
- .welcome{min-height:max(350px,calc(100dvh - 210px))}
-}
-@media(max-height:740px) and (min-width:821px){
- .welcome{min-height:max(330px,calc(100dvh - 215px))}
- .empty-image{min-height:225px}
- .acquisition-panel{padding:16px 20px}
- .panel-heading{margin-bottom:12px}
- .space-choice{padding:11px 14px}
- .floor-svg{max-height:310px}
+  .bottom-actions{gap:8px;padding-top:20px}
+  .bottom-actions .button{min-height:44px;padding:9px 10px;white-space:normal}
+  .bottom-actions .back-bottom{min-width:102px}
+  .bottom-actions .button.primary{min-width:0}
 }
 
 /* V.I.S.T.A. v2.6: menu contestuale e finestra Info. */

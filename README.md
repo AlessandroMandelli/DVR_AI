@@ -1,4 +1,4 @@
-# V.I.S.T.A. — PWA versione 2.6
+# V.I.S.T.A. — PWA versione 2.7
 
 **Visione Intelligente per la Sicurezza e la Tutela degli Ambienti**  
 *Ogni prospettiva conta. Ogni rischio merita attenzione.*
@@ -7,7 +7,7 @@ PWA installabile e utilizzabile offline per esplorare un percorso di analisi fot
 
 ## Menu e informazioni
 
-Il menu con le tre linee si chiude toccando o cliccando fuori dall’elenco, senza perdere le informazioni compilate. La nuova voce **Info** apre una finestra che mostra il collegamento pubblico `https://alessandromandelli.github.io/DVR_AI/` e la **versione 2.6**. La finestra si chiude toccando il fondo oscurato, il pulsante di chiusura oppure premendo Esc. Il collegamento apre il sito in una nuova scheda.
+Il menu con le tre linee si chiude toccando o cliccando fuori dall’elenco, senza perdere le informazioni compilate. La nuova voce **Info** apre una finestra che mostra il collegamento pubblico `https://alessandromandelli.github.io/DVR_AI/` e la **versione 2.7**. La finestra si chiude toccando il fondo oscurato, il pulsante di chiusura oppure premendo Esc. Il collegamento apre il sito in una nuova scheda.
 
 ## Schermate e comandi
 
@@ -18,7 +18,7 @@ Il menu con le tre linee si chiude toccando o cliccando fuori dall’elenco, sen
 5. **Validazione** — Per ogni controllo: gli stessi campi di nome, rischio, priorità e intervento, più Conferma, Escludi, Integra, note multilinea e stato. Anche le schede aggiunte dalla fotografia sono identiche a quelle iniziali. Pulsante **Registra validazione**.
 6. **Report** — Elenco di segnalazioni ed esiti, senza ripetere la foto. Il pulsante unico **Salva report** mostra per circa **4 secondi** un'animazione di archiviazione in sovraimpressione e scarica lo ZIP contenente PDF, JSON e fotografia.
 
-La barra di navigazione con **Indietro** in basso a sinistra e l’azione principale a destra resta sempre visibile, anche senza scorrere la pagina; i dati già inseriti vengono mantenuti.
+I pulsanti **Indietro** (a sinistra) e di avanzamento (a destra) si trovano **in fondo al contenuto della schermata**, senza barra fissa o sovrapposizione. Nelle schermate lunghe è necessario scorrere per raggiungerli. I dati già inseriti vengono mantenuti.
 
 ## Immagini panoramiche e riquadri
 
@@ -55,10 +55,10 @@ Per le fotografie ordinarie, le stesse azioni di annotazione sono disponibili su
 1. Usa il repository GitHub `DVR_AI` che pubblica la PWA all’indirizzo indicato sotto.
 2. Estrai **il contenuto** dello ZIP e carica nella radice del repository `index.html`, `styles.css`, `app.js`, `pano-viewer.js`, `service-worker.js`, `manifest.webmanifest`, `README.md` e la cartella `assets`.
 3. Apri **Settings → Pages**, seleziona **Deploy from a branch**, scegli `main` e `/ (root)`.
-4. Accedi all'indirizzo `https://TUOACCOUNT.github.io/vista/`.
+4. Accedi all'indirizzo `https://alessandromandelli.github.io/DVR_AI/`.
 5. Per installare la PWA, usa il comando di installazione del browser oppure, su Safari iOS, **Condividi → Aggiungi alla schermata Home**.
 
-Il service worker salva offline i file principali dell'app dopo il primo caricamento. Per installarla serve HTTPS o localhost. La versione 2.6 utilizza una cache nuova, in modo da non riproporre file della versione precedente.
+Il service worker salva offline i file principali dell'app dopo il primo caricamento. Per installarla serve HTTPS o localhost. La versione 2.7 utilizza una cache nuova, in modo da non riproporre file della versione precedente.
 
 ## Archiviazione locale
 
@@ -83,4 +83,8 @@ I risultati richiedono sempre verifica professionale. La PWA non aggiorna un DVR
 - `manifest.webmanifest`, `service-worker.js`: installazione e cache offline.
 - `assets/icon-192.png`, `assets/icon-512.png`: icone V.I.S.T.A.
 
-**Versione 2.6 — 18 novembre 2026.**
+**Versione 2.7 — 18 novembre 2026.**
+
+## Modifica 2.7
+
+Ripristinati i pulsanti nel flusso della pagina, eliminando la barra inferiore fissa introdotta nella v2.5; posizione sinistra/destra e tutte le altre funzioni mantenute.

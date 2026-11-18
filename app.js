@@ -1,11 +1,11 @@
-/* V.I.S.T.A. v2.6 — menu con chiusura esterna e finestra Info. */
+/* V.I.S.T.A. v2.7 — navigazione in fondo al contenuto; menu Info invariato. */
 (()=>{'use strict';
 const APP='V.I.S.T.A.';
 const LONG='Visione Intelligente per la Sicurezza e la Tutela degli Ambienti';
 const PAYOFF='Ogni prospettiva conta. Ogni rischio merita attenzione.';
-const VERSION='2.6';
+const VERSION='2.7';
 const PUBLIC_URL='https://alessandromandelli.github.io/DVR_AI/';
-const STORAGE='vista-pwa-v2-6-state';
+const STORAGE='vista-pwa-v2-7-state';
 const NAMES=['Avvio','Spazio','Acquisizione','Analisi AI','Validazione','Report'];
 const SPACES={
  office:{code:'012',name:'Ufficio 012',cluster:'Uffici',floor:'Piano terra',checks:[
@@ -33,7 +33,7 @@ const safe=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'
 const now=()=>new Date().toISOString();
 const initial=()=>({page:0,maxPage:0,space:'office',selected:true,photoName:'',photoIsPano:false,photoCanPano:false,photoModeSource:'automatico',captured:false,review:{},notes:{},statuses:{},itemEdits:{},custom:[],removed:[],regions:[],activeRegion:'',active:0,ready:false,viewPose:{yaw:0,pitch:0,fov:70},validatedAt:null,lastSavedAt:null});
 let s=initial(),photoBlob=null,photoURL=null,regions=[],viewer=null,editMode='explore',menu=false,infoOpen=false,installPrompt=null,loadingImage=false,transfer=false,transferProgress=0,toastTimer=null,analyzing=false,analysisTimer=null,pendingRegion=null;
-try{const o=JSON.parse(localStorage.getItem(STORAGE)||localStorage.getItem('vista-pwa-v2-5-state')||localStorage.getItem('vista-pwa-v2-4-state')||localStorage.getItem('vista-pwa-v2-3-state')||localStorage.getItem('vista-pwa-v2-2-state')||localStorage.getItem('vista-pwa-v2-1-state')||'null');if(o&&o.space in SPACES){s={...initial(),...o,page:Math.min(5,Math.max(0,Number(o.page)||0)),maxPage:Math.min(5,Math.max(0,Number(o.maxPage)||0))};}}catch(e){}
+try{const o=JSON.parse(localStorage.getItem(STORAGE)||localStorage.getItem('vista-pwa-v2-6-state')||localStorage.getItem('vista-pwa-v2-5-state')||localStorage.getItem('vista-pwa-v2-4-state')||localStorage.getItem('vista-pwa-v2-3-state')||localStorage.getItem('vista-pwa-v2-2-state')||localStorage.getItem('vista-pwa-v2-1-state')||'null');if(o&&o.space in SPACES){s={...initial(),...o,page:Math.min(5,Math.max(0,Number(o.page)||0)),maxPage:Math.min(5,Math.max(0,Number(o.maxPage)||0))};}}catch(e){}
 if(!Array.isArray(s.regions))s.regions=[];if(!Array.isArray(s.removed))s.removed=[];if(!Array.isArray(s.custom))s.custom=[];if(!s.itemEdits||typeof s.itemEdits!=='object')s.itemEdits={};regions=s.regions;if(s.photoIsPano&&!s.photoCanPano)s.photoCanPano=true;
 try{if(!localStorage.getItem(STORAGE)){
  for(const region of regions){
