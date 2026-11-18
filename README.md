@@ -1,4 +1,4 @@
-# V.I.S.T.A. — PWA versione 2.3
+# V.I.S.T.A. — PWA versione 2.4
 
 **Visione Intelligente per la Sicurezza e la Tutela degli Ambienti**  
 *Ogni prospettiva conta. Ogni rischio merita attenzione.*
@@ -9,7 +9,7 @@ PWA installabile e utilizzabile offline per esplorare un percorso di analisi fot
 
 1. **V.I.S.T.A.** — Schermata iniziale con icona a occhio e pulsante Inizia.
 2. **Spazio / PoliMaps** — Selezione di ufficio 012, aula o laboratorio. Il disegno di pianta, senza cornice grigia esterna, è illustrativo: ogni locale selezionabile corrisponde alla propria stanza disegnata. Pulsante **Conferma spazio**.
-3. **Acquisizione** — Foto scattata o caricata dall'utente, senza immagini preimpostate. Le fotografie equirettangolari con proporzioni circa 2:1 vengono mostrate con visualizzazione sferica a 360°. Pulsante **Analisi AI**.
+3. **Acquisizione** — Foto scattata o caricata dall'utente, senza immagini preimpostate. Le fotografie ordinarie, orizzontali o verticali, vengono mostrate in proiezione piana senza deformazioni. Le immagini equirettangolari orizzontali 2:1 possono essere esplorate a 360°; per immagini 2:1 dubbie è disponibile la scelta **Foto piana / 360°**. Pulsante **Analisi AI**.
 4. **Analisi AI** — Per circa **4 secondi** un diagramma animato rappresenta «Fotografia + Documentazione → Analisi e confronto → Elementi da verificare». Si apre poi la vista della fotografia e dei controlli, con riquadri generati automaticamente e modificabili. Pulsante **Validazione**.
 5. **Validazione** — Per ogni controllo: Conferma, Escludi, Integra, note multilinea, priorità e stato dell'intervento. I controlli creati da nuovi riquadri possono essere compilati testualmente. Pulsante **Registra validazione**.
 6. **Report** — Elenco di segnalazioni ed esiti, senza ripetere la foto. Il pulsante unico **Salva report** mostra per circa **4 secondi** un'animazione di archiviazione in sovraimpressione e scarica lo ZIP contenente PDF, JSON e fotografia.
@@ -32,11 +32,19 @@ Nella schermata Analisi, la barra sopra la fotografia offre cinque azioni:
 - **Ridimensiona**: trascina su un rettangolo per modificarne la larghezza e l'altezza;
 - **Elimina**: cancella il rettangolo selezionato, insieme al controllo associato, previa conferma.
 
-I riquadri iniziali si distribuiscono nella fascia centrale della foto. Il nome di un controllo creato manualmente può essere modificato dalla lista sulla destra tramite **Rinomina**. La validazione non contiene più il comando duplicato "Aggiungi criticità".
+I riquadri iniziali si distribuiscono nella fascia centrale della foto, sia in modalità piana sia a 360°. Il pulsante «Rinomina» non è più presente nei Controlli suggeriti: il nome del controllo viene richiesto nel popup quando si disegna il nuovo rettangolo. Nella schermata Validazione resta modificabile il titolo del controllo personalizzato. La Validazione non contiene il comando duplicato «Aggiungi criticità».
 
 I riquadri restano memorizzati nelle coordinate normalizzate dell'immagine e mantengono la posizione quando la panoramica ruota o viene ingrandita. Scegliere un controllo nell'elenco orienta la panoramica verso la sua area. Le annotazioni appaiono anche sulla fotografia inclusa nel PDF.
 
-Per le fotografie ordinarie, le stesse azioni di annotazione sono disponibili su una vista piana.
+Per le fotografie ordinarie, le stesse azioni di annotazione sono disponibili su una vista piana, che mantiene la proporzione originale (anche per foto verticali). I controlli generati da nuovi riquadri restano associati durante la validazione e nell'esportazione PDF/JSON.
+
+### Come viene scelta la vista fotografica
+
+- La visualizzazione immersiva viene proposta **soltanto** per immagini orizzontali molto vicine alla proporzione equirettangolare **2:1**.
+- Quando disponibili, i metadati GPano del file originale aiutano a riconoscere la proiezione.
+- Poiché il semplice rapporto 2:1 **non garantisce** che una fotografia sia equirettangolare, per i file compatibili compare anche un selettore «Foto piana / 360°», nella schermata Acquisizione e in Analisi.
+- Tutte le immagini non compatibili (ad esempio 16:9, 4:3, verticali) vengono mostrate soltanto in modalità piana.
+- I rettangoli possono essere aggiunti, spostati, ridimensionati ed eliminati anche nelle immagini piane.
 
 ## Pubblicazione su GitHub Pages
 
@@ -46,7 +54,7 @@ Per le fotografie ordinarie, le stesse azioni di annotazione sono disponibili su
 4. Accedi all'indirizzo `https://TUOACCOUNT.github.io/vista/`.
 5. Per installare la PWA, usa il comando di installazione del browser oppure, su Safari iOS, **Condividi → Aggiungi alla schermata Home**.
 
-Il service worker salva offline i file principali dell'app dopo il primo caricamento. Per installarla serve HTTPS o localhost. La versione 2.3 utilizza una cache nuova, in modo da non riproporre file della versione precedente.
+Il service worker salva offline i file principali dell'app dopo il primo caricamento. Per installarla serve HTTPS o localhost. La versione 2.4 utilizza una cache nuova, in modo da non riproporre file della versione precedente.
 
 ## Archiviazione locale
 
@@ -71,4 +79,4 @@ I risultati richiedono sempre verifica professionale. La PWA non aggiorna un DVR
 - `manifest.webmanifest`, `service-worker.js`: installazione e cache offline.
 - `assets/icon-192.png`, `assets/icon-512.png`: icone V.I.S.T.A.
 
-**Versione 2.3 — 18 novembre 2026.**
+**Versione 2.4 — 18 novembre 2026.**

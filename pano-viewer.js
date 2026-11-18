@@ -1,4 +1,4 @@
-/* V.I.S.T.A. 2.2 - visualizzatore equirettangolare offline e annotazioni */
+/* V.I.S.T.A. 2.4 - visualizzatore equirettangolare o piano, con annotazioni */
 (()=>{'use strict';
 const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
 const wrap=x=>((x%1)+1)%1;
@@ -29,7 +29,7 @@ class MediaViewer{
  this.onDown=e=>this.pointerDown(e);this.onMove=e=>this.pointerMove(e);this.onUp=e=>this.pointerUp(e);this.onWheel=e=>this.wheel(e);this.onResize=()=>this.draw();this.stage.addEventListener('pointerdown',this.onDown);this.stage.addEventListener('pointermove',this.onMove);this.stage.addEventListener('pointerup',this.onUp);this.stage.addEventListener('pointercancel',this.onUp);this.stage.addEventListener('wheel',this.onWheel,{passive:false});
  this.ro=window.ResizeObserver?new ResizeObserver(this.onResize):null;this.ro?.observe(this.stage);this.img.onload=()=>this.initImage();if(this.img.complete&&this.img.naturalWidth)this.initImage();}
  initImage(){if(this.dead)return;if(this.pano){this.img.style.display='none';try{this.glInfo=setupGL(this.canvas,this.img)}catch(e){console.warn('Vista panoramica non disponibile:',e);this.pano=false;this.canvas.style.display='none';this.img.style.display='block';this.stage.classList.add('flat-stage');}}
- if(!this.pano){this.stage.style.aspectRatio=`${this.img.naturalWidth||16} / ${this.img.naturalHeight||9}`;this.img.style.display='block'}this.draw()}
+ if(!this.pano){this.stage.style.aspectRatio=`${this.img.naturalWidth||16} / ${this.img.naturalHeight||9}`;this.stage.style.setProperty('--flat-ratio',String((this.img.naturalWidth||16)/(this.img.naturalHeight||9)));this.img.style.display='block'}this.draw()}
  dispose(){this.dead=true;this.ro?.disconnect();this.glInfo?.dispose();this.stage.removeEventListener('pointerdown',this.onDown);this.stage.removeEventListener('pointermove',this.onMove);this.stage.removeEventListener('pointerup',this.onUp);this.stage.removeEventListener('pointercancel',this.onUp);this.stage.removeEventListener('wheel',this.onWheel)}
  setMode(mode){this.mode=mode;this.stage.dataset.mode=mode;}
  setActive(id){this.active=id;this.drawOverlay()}
