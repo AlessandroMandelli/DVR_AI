@@ -1,53 +1,72 @@
-# V.I.S.T.A. — PWA v2.1
+# V.I.S.T.A. — PWA versione 2.2
 
-**Visione Intelligente per la Sicurezza e la Tutela degli Ambienti**
-
+**Visione Intelligente per la Sicurezza e la Tutela degli Ambienti**  
 *Ogni prospettiva conta. Ogni rischio merita attenzione.*
 
-Una PWA installabile per presentare e sperimentare il processo di acquisizione fotografica, pre-analisi degli spazi, validazione tecnica e redazione di un report strutturato.
+PWA installabile e utilizzabile offline per esplorare un percorso di analisi fotografica degli ambienti universitari, associazione di controlli, validazione tecnica e produzione di un report.
 
-## Funzionamento
+## Schermate e comandi
 
-1. **Avvio:** schermata essenziale con icona a occhio, nome V.I.S.T.A. e payoff.
-2. **Spazio:** selezione di ufficio 012, aula o laboratorio tramite elenco e planimetria schematica; pulsante **Conferma spazio**.
-3. **Acquisizione:** area inizialmente vuota; carica una fotografia o usa la fotocamera del dispositivo; pulsante **Registra acquisizione**. Non sono proposte immagini iniziali.
-4. **Analisi AI:** vengono calcolati automaticamente rettangoli sulla fotografia tramite elaborazione locale dei contrasti; sono proposti controlli legati alla tipologia di spazio. Selezionando un controllo viene evidenziata un’area. Pulsante **Validazione**.
-5. **Validazione:** opzioni **Conferma**, **Escludi**, **Integra** con annotazioni multilinea. È possibile aggiungere una nuova criticità e indicare lo stato dell’intervento (**Da verificare**, **Da eseguire**, **Risolto**). Pulsante **Registra validazione**.
-6. **Report:** riepilogo, fotografia con aree visive, esiti, interventi e note. Unico pulsante principale **Salva report** con animazione verso un archivio. Produce **un solo ZIP** contenente PDF, JSON e foto, e tenta di conservarlo in IndexedDB.
+1. **V.I.S.T.A.** — Schermata iniziale con icona a occhio e pulsante Inizia.
+2. **Spazio / PoliMaps** — Selezione di ufficio 012, aula o laboratorio. Il disegno di pianta è illustrativo: ogni locale selezionabile corrisponde alla propria stanza disegnata. Pulsante **Conferma spazio**.
+3. **Acquisizione** — Foto scattata o caricata dall'utente, senza immagini preimpostate. Le fotografie equirettangolari con proporzioni circa 2:1 vengono mostrate con visualizzazione sferica a 360°. Pulsante **Analisi AI**.
+4. **Analisi AI** — Per circa **3 secondi** un diagramma animato rappresenta «Fotografia + Documentazione → Analisi e confronto → Elementi da verificare». Si apre poi la vista della fotografia e dei controlli, con riquadri generati automaticamente e modificabili. Pulsante **Validazione**.
+5. **Validazione** — Per ogni controllo: Conferma, Escludi, Integra, note multilinea, priorità e stato dell'intervento. I controlli creati da nuovi riquadri possono essere compilati testualmente. Pulsante **Registra validazione**.
+6. **Report** — Elenco di segnalazioni ed esiti, senza ripetere la foto. Il pulsante unico **Salva report** mostra per circa **3 secondi** un'animazione di archiviazione in sovraimpressione e scarica lo ZIP contenente PDF, JSON e fotografia.
 
-La navigazione consente di tornare alle schermate precedenti senza perdere il lavoro. La grafica si adatta a tablet, smartphone e desktop.
+Il pulsante **Indietro** è nella parte inferiore sinistra di ogni schermata successiva alla prima; i dati già inseriti vengono mantenuti.
+
+## Immagini panoramiche e riquadri
+
+Per un'immagine equirettangolare a 360°:
+
+- Trascina con il mouse o con un dito per orientare la vista;
+- usa la rotellina o due dita per lo zoom;
+- usa il pulsante **Schermo intero** per espandere la panoramica.
+
+Nella schermata Analisi, la barra sopra la fotografia offre cinque azioni:
+
+- **Esplora**: ruota la vista panoramica; clicca su un rettangolo per selezionarlo;
+- **Aggiungi**: trascina per disegnare un rettangolo. Viene creato anche un nuovo controllo con lo stesso riferimento numerico;
+- **Sposta**: trascina un rettangolo esistente;
+- **Ridimensiona**: trascina su un rettangolo per modificarne la larghezza e l'altezza;
+- **Elimina**: cancella il rettangolo selezionato, insieme al controllo associato, previa conferma.
+
+I riquadri restano memorizzati nelle coordinate normalizzate dell'immagine e mantengono la posizione quando la panoramica ruota o viene ingrandita. Scegliere un controllo nell'elenco orienta la panoramica verso la sua area. Le annotazioni appaiono anche sulla fotografia inclusa nel PDF.
+
+Per le fotografie ordinarie, le stesse azioni di annotazione sono disponibili su una vista piana.
 
 ## Pubblicazione su GitHub Pages
 
-1. Crea un repository GitHub (ad esempio `vista`).
-2. Estrai lo ZIP di questa versione e carica i file (`index.html`, `app.js`, `styles.css`, `manifest.webmanifest`, `service-worker.js`, `README.md`) e la cartella `assets` nella **radice** del repository.
-3. Apri **Settings > Pages > Deploy from a branch**, seleziona `main` e `/ (root)`.
-4. Apri l’URL `https://TUOACCOUNT.github.io/vista/` (o il nome del repository scelto).
-5. Su iOS, da Safari, **Condividi > Aggiungi alla schermata Home**. Su desktop Chrome/Edge usa la funzione di installazione del browser.
+1. Crea un repository GitHub (per esempio `vista`).
+2. Estrai **il contenuto** dello ZIP e carica nella radice del repository `index.html`, `styles.css`, `app.js`, `pano-viewer.js`, `service-worker.js`, `manifest.webmanifest`, `README.md` e la cartella `assets`.
+3. Apri **Settings → Pages**, seleziona **Deploy from a branch**, scegli `main` e `/ (root)`.
+4. Accedi all'indirizzo `https://TUOACCOUNT.github.io/vista/`.
+5. Per installare la PWA, usa il comando di installazione del browser oppure, su Safari iOS, **Condividi → Aggiungi alla schermata Home**.
 
-Il service worker consente l’utilizzo offline dei file dell’app dopo il primo caricamento con connessione. Per l'installazione occorrono HTTPS o localhost; l'apertura diretta da file system non è sufficiente.
+Il service worker salva offline i file principali dell'app dopo il primo caricamento. Per installarla serve HTTPS o localhost. La versione 2.2 utilizza una cache nuova, in modo da non riproporre file della versione precedente.
 
-## Elaborazione delle immagini e limiti
+## Archiviazione locale
 
-L'app **non utilizza ancora un modello AI reale per il riconoscimento dei pericoli**. Le aree rettangolari vengono **individuate automaticamente** mediante una procedura di analisi locale delle variazioni di luminosità e dei contorni. L'algoritmo trova aree visivamente ricche di dettagli, **non identifica né certifica i rischi**. Le categorie e i controlli proposti provengono da elenchi predefiniti per uffici, aule e laboratori, e non sono inferiti semanticamente dalla foto. La selezione di un controllo evidenzia una regione per la consultazione, non una corrispondenza verificata tra oggetto e rischio.
+- Fotografia corrente: IndexedDB del browser.
+- Controlli, rettangoli, osservazioni, stati e navigazione: localStorage.
+- Report esportato: un solo file ZIP con `.pdf`, `.json` e `_foto.jpg`.
+- Il PDF include la fotografia con i riquadri numerati, senza alterarne le proporzioni.
+- L'animazione finale rappresenta un flusso verso un archivio; **non invia alcun dato a un server o database online**.
 
-Il report è una **pre-analisi** e non sostituisce sopralluoghi, misurazioni, verifiche e valutazione da parte delle figure competenti. Non aggiorna alcun DVR. Il progetto non interroga PoliMaps o altri sistemi gestionali.
+## Ambito effettivo del prototipo
 
-## Archiviazione e dati
+Le aree iniziali sono calcolate con un algoritmo locale che ricerca regioni ad alto contrasto. **Non è un modello AI che riconosce semanticamente pericoli**. Le checklist iniziali dipendono dal tipo di spazio selezionato; l'associazione fra rettangoli e controlli serve alla revisione e non costituisce una diagnosi tecnica. L'animazione che mostra il confronto con DVR, PoliMaps e requisiti rappresenta un'architettura futura: **non legge documenti né interroga sistemi di Ateneo**.
 
-- Fotografia corrente: compressa in JPEG e conservata, quando disponibile, nell'IndexedDB del dispositivo.
-- Scelte di revisione e testo: conservati nel `localStorage` del browser.
-- Report: un ZIP locale contenente `.pdf` (versione stampabile a pagine A4, resa come immagine), `.json` (dati strutturati) e `_foto.jpg`.
-- Il pulsante di salvataggio mostra un'animazione che rappresenta un trasferimento verso l'archivio, **ma non effettua alcun upload verso un database online**. Un backend e adeguati controlli di autorizzazione e protezione dei dati saranno necessari per un invio reale.
-- Nessuna fotografia è inviata a servizi esterni o API.
+I risultati richiedono sempre verifica professionale. La PWA non aggiorna un DVR ufficiale e non effettua una reale validazione da remoto.
 
-## File del progetto
+## File
 
-- `index.html`: struttura e caricamento delle risorse.
-- `styles.css`: layout responsive e aspetti grafici.
-- `app.js`: tutte le schermate, logica dei rettangoli automatici, validazione, produzione ZIP/PDF/JSON.
-- `manifest.webmanifest`: installazione PWA.
-- `service-worker.js`: cache locale offline.
-- `assets/icon-192.png`, `assets/icon-512.png`: icone a forma di occhio.
+- `index.html`: avvio della PWA.
+- `styles.css`: grafica responsive, layout e annotazioni.
+- `app.js`: percorso operativo, logica e archivio PDF/JSON/ZIP.
+- `pano-viewer.js`: proiezione sferica WebGL, panoramica, comandi touch/mouse e annotazioni geometriche.
+- `manifest.webmanifest`, `service-worker.js`: installazione e cache offline.
+- `assets/icon-192.png`, `assets/icon-512.png`: icone V.I.S.T.A.
 
-**Versione: 2.1 · 18 novembre 2026**
+**Versione 2.2 — 18 novembre 2026.**

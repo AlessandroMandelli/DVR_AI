@@ -1,5 +1,5 @@
-const CACHE='vista-v2-1-20261118b';
-const CORE=['./','./index.html','./styles.css','./app.js','./manifest.webmanifest',
+const CACHE='vista-v2-2-20261118a';
+const CORE=['./','./index.html','./styles.css','./app.js','./pano-viewer.js','./manifest.webmanifest',
   './assets/icon-192.png','./assets/icon-512.png'];
 self.addEventListener('install',event=>{
  event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(CORE)));
