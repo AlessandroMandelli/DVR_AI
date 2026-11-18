@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2000" height="1000" viewBox="0 0 2000 1000">
+<defs>
+ <linearGradient id="wall" x1="0" y1="0" y2="1"><stop stop-color="#eff5f8"/><stop offset="1" stop-color="#dce7ec"/></linearGradient>
+ <linearGradient id="floor" x1="0" y1="0" y2="1"><stop stop-color="#bdc8cb"/><stop offset="1" stop-color="#8b9b9f"/></linearGradient>
+ <linearGradient id="glass" x1="0" y1="0" y2="1"><stop stop-color="#a5cee0"/><stop offset="1" stop-color="#d8eaf0"/></linearGradient>
+ <linearGradient id="desk" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#dde6e8"/><stop offset="1" stop-color="#a8b8c0"/></linearGradient>
+ <linearGradient id="dark" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#2b4c61"/><stop offset="1" stop-color="#0b2436"/></linearGradient>
+ <pattern id="floorlines" width="140" height="70" patternUnits="userSpaceOnUse"><path d="M 0 0 L 140 0 M 0 0 L 0 70" fill="none" stroke="#f1f5f6" opacity=".19" stroke-width="2"/></pattern>
+ <filter id="shadow"><feGaussianBlur stdDeviation="12"/></filter>
+</defs>
+<!-- Panoramic continuous illustration, deliberately fictional demonstration room -->
+<rect width="2000" height="680" fill="url(#wall)"/><path d="M0 0 H2000 V125 H0Z" fill="#f7fafb"/>
+<path d="M0 680 Q1000 620 2000 680 L2000 1000 H0Z" fill="url(#floor)"/>
+<path d="M0 680 Q1000 620 2000 680 L2000 1000 H0Z" fill="url(#floorlines)"/>
+<path d="M0 680 Q1000 620 2000 680" stroke="#8ca4ab" stroke-width="7" fill="none"/>
+<!-- left windows -->
+<g stroke="#8aa2ac" stroke-width="15"><rect x="65" y="175" width="388" height="355" rx="4" fill="url(#glass)"/><path d="M258 175 V530 M65 340 H453"/><rect x="1430" y="160" width="485" height="365" rx="4" fill="url(#glass)"/><path d="M1672 160 V525 M1430 342 H1915"/></g>
+<g fill="#9dc2b1" opacity=".68"><path d="M80 487 Q140 322 230 464 V530 H80Z"/><path d="M230 500 Q285 325 435 478 V529 H230Z"/><path d="M1452 500 Q1494 344 1618 486 V525 H1452Z"/><path d="M1660 500 Q1745 325 1908 482 V525 H1660Z"/></g>
+<!-- central wall, clock and door -->
+<rect x="960" y="160" width="225" height="510" fill="#c5d2d7"/><rect x="977" y="170" width="192" height="500" fill="#f4f7f8"/><rect x="995" y="195" width="159" height="480" fill="#e3e9e8"/><circle cx="1066" cy="237" r="5" fill="#8099a4"/>
+<circle cx="1320" cy="230" r="53" fill="#fcfcfa" stroke="#bdcad0" stroke-width="8"/><path d="M1320 230 l0 -25 m0 25 l24 13" stroke="#476174" stroke-width="6" stroke-linecap="round"/>
+<rect x="580" y="190" width="250" height="150" rx="6" fill="#e0eae9" stroke="#a8bec5" stroke-width="10"/><path d="M603 245 H797 M603 269 H748 M603 296 H783" stroke="#8faeb5" stroke-width="7"/>
+<!-- ceiling panels and lights -->
+<path d="M0 120 H2000" stroke="#c1d0d6" stroke-width="12"/><g fill="#fff" stroke="#c5d6dc" stroke-width="8"><rect x="210" y="70" width="270" height="26" rx="13"/><rect x="828" y="70" width="280" height="26" rx="13"/><rect x="1510" y="70" width="270" height="26" rx="13"/></g>
+<!-- background filing -->
+<g><rect x="1180" y="370" width="175" height="308" rx="7" fill="#a8b9c0"/><rect x="1192" y="384" width="151" height="284" rx="4" fill="#d8e1e4"/><path d="M1192 455 H1343 M1192 527 H1343 M1192 599 H1343" stroke="#97acb3" stroke-width="9"/><g fill="#7598ad"><rect x="1215" y="400" width="27" height="40"/><rect x="1246" y="400" width="34" height="40"/><rect x="1284" y="400" width="28" height="40"/></g></g>
+<!-- desks -->
+<g>
+ <ellipse cx="530" cy="825" rx="340" ry="50" fill="#344b55" opacity=".18" filter="url(#shadow)"/>
+ <path d="M260 665 L810 650 L900 744 L183 762Z" fill="url(#desk)" stroke="#8da3ac" stroke-width="12"/>
+ <path d="M248 752 L232 895 M823 731 L853 905" stroke="#547483" stroke-width="21"/>
+ <rect x="484" y="480" width="224" height="151" rx="12" fill="url(#dark)" stroke="#627984" stroke-width="11"/>
+ <rect x="500" y="494" width="193" height="117" rx="3" fill="#8db5c6"/><path d="M510 588 l45 -47 35 30 36 -42 62 62" stroke="#c3e3ea" stroke-width="7" fill="none"/>
+ <path d="M590 638 V660" stroke="#577482" stroke-width="16"/>
+ <rect x="360" y="625" width="153" height="26" rx="5" fill="#cdd8dc"/>
+ <rect x="720" y="601" width="65" height="50" rx="8" fill="#f9fbfb" stroke="#bbc8c9" stroke-width="6"/>
+ <path d="M721 625 H785" stroke="#d5dfe1" stroke-width="5"/>
+</g>
+<g>
+ <ellipse cx="1560" cy="835" rx="370" ry="56" fill="#344b55" opacity=".18" filter="url(#shadow)"/>
+ <path d="M1278 671 L1815 657 L1950 743 L1210 773Z" fill="url(#desk)" stroke="#8fa4a9" stroke-width="12"/>
+ <path d="M1270 757 L1270 920 M1850 750 L1878 900" stroke="#53707c" stroke-width="22"/>
+ <rect x="1470" y="476" width="240" height="151" rx="12" fill="url(#dark)" stroke="#607a86" stroke-width="10"/><rect x="1487" y="492" width="206" height="115" rx="4" fill="#9dc3cf"/>
+ <path d="M1590 626 V657" stroke="#577482" stroke-width="17"/><rect x="1375" y="639" width="170" height="16" rx="4" fill="#c5d1d7"/>
+ <g fill="#d7a86b"><rect x="1737" y="603" width="39" height="36"/><rect x="1778" y="596" width="31" height="43"/></g>
+</g>
+<!-- chair silhouettes -->
+<g fill="#416578"><rect x="75" y="626" width="136" height="157" rx="57"/><rect x="99" y="766" width="97" height="50" rx="20"/><path d="M148 805 V912" stroke="#416578" stroke-width="19"/><path d="M97 915 H202" stroke="#416578" stroke-width="20" stroke-linecap="round"/>
+<rect x="1022" y="666" width="139" height="159" rx="56"/><rect x="1041" y="800" width="101" height="37" rx="17"/><path d="M1092 827 V926 M1035 934 H1149" stroke="#416578" stroke-width="19" stroke-linecap="round"/></g>
+<!-- foreground floor cabling deliberately visible -->
+<path d="M530 718 C560 770 700 780 700 837 S764 926 950 912" stroke="#3e4950" stroke-width="12" fill="none" stroke-linecap="round"/>
+<path d="M540 722 C580 782 660 790 670 835" stroke="#71818b" stroke-width="5" fill="none"/>
+<!-- multipresa -->
+<rect x="1205" y="733" width="133" height="37" rx="11" fill="#f9fbfa" stroke="#6f8188" stroke-width="6" transform="rotate(7 1205 733)"/><circle cx="1241" cy="753" r="7" fill="#607681"/><circle cx="1290" cy="759" r="7" fill="#607681"/>
+<!-- boxes blocking walkway -->
+<g stroke="#bd8f56" stroke-width="5"><path d="M950 788 l110 -8 22 66 -118 10Z" fill="#bd986b"/><path d="M965 788 l55 -29 108 14 -68 8Z" fill="#dec09a"/><path d="M1062 783 l66 -10 -16 67 -30 7Z" fill="#ad8157"/></g>
+<!-- signage -->
+<rect x="1040" y="135" width="112" height="44" rx="3" fill="#169a7f"/><path d="M1071 159 h34 m-12 -12 12 12 -12 12" stroke="white" stroke-width="5" fill="none"/>
+<!-- plants and common office details -->
+<rect x="1378" y="600" width="44" height="72" rx="6" fill="#e5d5bd"/><path d="M1398 604 C1320 581 1350 525 1381 538 C1420 516 1464 562 1408 592 C1418 530 1408 498 1387 482" stroke="#4b8b71" stroke-width="14" stroke-linecap="round" fill="none"/>
+<rect x="885" y="419" width="22" height="95" rx="4" fill="#b3c1c4"/><rect x="878" y="403" width="37" height="35" rx="6" fill="#f7f8f8" stroke="#9aacb4" stroke-width="4"/>
+</svg>
