@@ -1,9 +1,13 @@
-# V.I.S.T.A. — PWA versione 2.4
+# V.I.S.T.A. — PWA versione 2.6
 
 **Visione Intelligente per la Sicurezza e la Tutela degli Ambienti**  
 *Ogni prospettiva conta. Ogni rischio merita attenzione.*
 
 PWA installabile e utilizzabile offline per esplorare un percorso di analisi fotografica degli ambienti universitari, associazione di controlli, validazione tecnica e produzione di un report.
+
+## Menu e informazioni
+
+Il menu con le tre linee si chiude toccando o cliccando fuori dall’elenco, senza perdere le informazioni compilate. La nuova voce **Info** apre una finestra che mostra il collegamento pubblico `https://alessandromandelli.github.io/DVR_AI/` e la **versione 2.6**. La finestra si chiude toccando il fondo oscurato, il pulsante di chiusura oppure premendo Esc. Il collegamento apre il sito in una nuova scheda.
 
 ## Schermate e comandi
 
@@ -11,10 +15,10 @@ PWA installabile e utilizzabile offline per esplorare un percorso di analisi fot
 2. **Spazio / PoliMaps** — Selezione di ufficio 012, aula o laboratorio. Il disegno di pianta, senza cornice grigia esterna, è illustrativo: ogni locale selezionabile corrisponde alla propria stanza disegnata. Pulsante **Conferma spazio**.
 3. **Acquisizione** — Foto scattata o caricata dall'utente, senza immagini preimpostate. Le fotografie ordinarie, orizzontali o verticali, vengono mostrate in proiezione piana senza deformazioni. Le immagini equirettangolari orizzontali 2:1 possono essere esplorate a 360°; per immagini 2:1 dubbie è disponibile la scelta **Foto piana / 360°**. Pulsante **Analisi AI**.
 4. **Analisi AI** — Per circa **4 secondi** un diagramma animato rappresenta «Fotografia + Documentazione → Analisi e confronto → Elementi da verificare». Si apre poi la vista della fotografia e dei controlli, con riquadri generati automaticamente e modificabili. Pulsante **Validazione**.
-5. **Validazione** — Per ogni controllo: Conferma, Escludi, Integra, note multilinea, priorità e stato dell'intervento. I controlli creati da nuovi riquadri possono essere compilati testualmente. Pulsante **Registra validazione**.
+5. **Validazione** — Per ogni controllo: gli stessi campi di nome, rischio, priorità e intervento, più Conferma, Escludi, Integra, note multilinea e stato. Anche le schede aggiunte dalla fotografia sono identiche a quelle iniziali. Pulsante **Registra validazione**.
 6. **Report** — Elenco di segnalazioni ed esiti, senza ripetere la foto. Il pulsante unico **Salva report** mostra per circa **4 secondi** un'animazione di archiviazione in sovraimpressione e scarica lo ZIP contenente PDF, JSON e fotografia.
 
-Il pulsante **Indietro** è nella parte inferiore sinistra di ogni schermata successiva alla prima; i dati già inseriti vengono mantenuti.
+La barra di navigazione con **Indietro** in basso a sinistra e l’azione principale a destra resta sempre visibile, anche senza scorrere la pagina; i dati già inseriti vengono mantenuti.
 
 ## Immagini panoramiche e riquadri
 
@@ -22,7 +26,7 @@ Per un'immagine equirettangolare a 360°:
 
 - Trascina con il mouse o con un dito per orientare la vista;
 - usa la rotellina o due dita per lo zoom;
-- usa il pulsante **Schermo intero** per espandere la panoramica.
+- esplora la panoramica nella finestra della PWA, senza pulsante di visualizzazione a schermo intero.
 
 Nella schermata Analisi, la barra sopra la fotografia offre cinque azioni:
 
@@ -32,7 +36,7 @@ Nella schermata Analisi, la barra sopra la fotografia offre cinque azioni:
 - **Ridimensiona**: trascina su un rettangolo per modificarne la larghezza e l'altezza;
 - **Elimina**: cancella il rettangolo selezionato, insieme al controllo associato, previa conferma.
 
-I riquadri iniziali si distribuiscono nella fascia centrale della foto, sia in modalità piana sia a 360°. Il pulsante «Rinomina» non è più presente nei Controlli suggeriti: il nome del controllo viene richiesto nel popup quando si disegna il nuovo rettangolo. Nella schermata Validazione resta modificabile il titolo del controllo personalizzato. La Validazione non contiene il comando duplicato «Aggiungi criticità».
+I riquadri iniziali si distribuiscono nella fascia centrale della foto, sia in modalità piana sia a 360°. Il pulsante «Rinomina» non è più presente nei Controlli suggeriti: il nome del controllo viene richiesto nel popup quando si disegna il nuovo rettangolo. Nella schermata Validazione le schede dei controlli automatici e di quelli aggiunti a mano sono identiche per campi, impaginazione e azioni; titolo, rischio, priorità e intervento sono modificabili in entrambe. La Validazione non contiene il comando duplicato «Aggiungi criticità».
 
 I riquadri restano memorizzati nelle coordinate normalizzate dell'immagine e mantengono la posizione quando la panoramica ruota o viene ingrandita. Scegliere un controllo nell'elenco orienta la panoramica verso la sua area. Le annotazioni appaiono anche sulla fotografia inclusa nel PDF.
 
@@ -48,13 +52,13 @@ Per le fotografie ordinarie, le stesse azioni di annotazione sono disponibili su
 
 ## Pubblicazione su GitHub Pages
 
-1. Crea un repository GitHub (per esempio `vista`).
+1. Usa il repository GitHub `DVR_AI` che pubblica la PWA all’indirizzo indicato sotto.
 2. Estrai **il contenuto** dello ZIP e carica nella radice del repository `index.html`, `styles.css`, `app.js`, `pano-viewer.js`, `service-worker.js`, `manifest.webmanifest`, `README.md` e la cartella `assets`.
 3. Apri **Settings → Pages**, seleziona **Deploy from a branch**, scegli `main` e `/ (root)`.
 4. Accedi all'indirizzo `https://TUOACCOUNT.github.io/vista/`.
 5. Per installare la PWA, usa il comando di installazione del browser oppure, su Safari iOS, **Condividi → Aggiungi alla schermata Home**.
 
-Il service worker salva offline i file principali dell'app dopo il primo caricamento. Per installarla serve HTTPS o localhost. La versione 2.4 utilizza una cache nuova, in modo da non riproporre file della versione precedente.
+Il service worker salva offline i file principali dell'app dopo il primo caricamento. Per installarla serve HTTPS o localhost. La versione 2.6 utilizza una cache nuova, in modo da non riproporre file della versione precedente.
 
 ## Archiviazione locale
 
@@ -79,4 +83,4 @@ I risultati richiedono sempre verifica professionale. La PWA non aggiorna un DVR
 - `manifest.webmanifest`, `service-worker.js`: installazione e cache offline.
 - `assets/icon-192.png`, `assets/icon-512.png`: icone V.I.S.T.A.
 
-**Versione 2.4 — 18 novembre 2026.**
+**Versione 2.6 — 18 novembre 2026.**

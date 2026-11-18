@@ -1,4 +1,4 @@
-/* V.I.S.T.A. 2.4 - visualizzatore equirettangolare o piano, con annotazioni */
+/* V.I.S.T.A. 2.5 - visualizzatore equirettangolare o piano, con annotazioni */
 (()=>{'use strict';
 const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
 const wrap=x=>((x%1)+1)%1;
@@ -69,7 +69,6 @@ class MediaViewer{
  else{r.w=clamp(d.orig.w+du,.045,.995-r.x);r.h=clamp(d.orig.h+dv,.045,.995-r.y)}this.drawOverlay();}
  }
  pointerUp(e){if(this.pointers.has(e.pointerId))this.pointers.delete(e.pointerId);if(this.drag?.type==='pinch'){if(this.pointers.size<2)this.drag=null;return}if(this.pointers.size>0)return;const d=this.drag;this.drag=null;if(!d)return;if(d.type==='add'){const a=this.draft;this.draft=null;if(a&&a.w>.015&&a.h>.015)this.opt.onAdd?.(a);else this.drawOverlay();return}if(d.type==='move'||d.type==='resize')this.opt.onChanged?.(this.regions);}
- fullscreen(){if(document.fullscreenElement===this.host)document.exitFullscreen?.();else this.host.requestFullscreen?.().catch(()=>{})}
  }
 window.VistaMediaViewer=MediaViewer;
 })();
